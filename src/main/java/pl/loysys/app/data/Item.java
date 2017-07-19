@@ -3,7 +3,7 @@ package pl.loysys.app.data;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "quotation_item")
+@Table(name = "item")
 class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

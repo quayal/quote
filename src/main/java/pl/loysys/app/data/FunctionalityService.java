@@ -15,6 +15,6 @@ public class FunctionalityService {
     }
 
     public void addItem(Functionality functionality, Item item){
-        functionality.addQuotationItem(item);
+        functionality.addItem(item);
     }
 }

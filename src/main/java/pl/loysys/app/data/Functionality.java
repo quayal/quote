@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "quotation_functionality")
+@Table(name = "functionalities")
 public class Functionality {
 
     @Id
@@ -53,7 +53,7 @@ public class Functionality {
         this.functionalityTime = functionalityTime;
     }
 
-    public void addQuotationItem(Item item) {
+    public void addItem(Item item) {
         items.add(item);
     }
 

@@ -1,0 +1,16 @@
+<h2>Wyceny</h2>
+<ul>
+<ul class="quotations">
+  <li *ngFor="let quotation of quotations"
+      (click)="onSelect(quotation)"
+      [class.selected]="quotation === selectedQuotation">
+    <span>{{quotation.id}}</span>
+    <span>{{quotation.client}}</span>
+    <span>{{quotation.name}}</span>
+
+  </li>
+</ul>
+<div *ngIf="selectedHero">
+  <h2>{{selectedQuotation.name | uppercase}} is my quotation</h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>

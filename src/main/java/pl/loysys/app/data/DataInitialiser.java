@@ -12,18 +12,18 @@ public class DataInitialiser {
     private static final Logger log = LoggerFactory.getLogger(DataInitialiser.class);
     @Autowired
     private FunctionalityRepository functionalityRepository;
+    @Autowired
+    private QuotationRepository quotationRepository;
 
-    @PostConstruct
+/*    @PostConstruct
     public void doSth() {
-        functionalityRepository.save(new Functionality("Functionality one"));
-        functionalityRepository.save(new Functionality("Functionality two"));
-        functionalityRepository.save(new Functionality("Functionality three"));
-        functionalityRepository.save(new Functionality("Functionality four"));
-        functionalityRepository.save(new Functionality("Functionality five"));
 
-        log.info("Functionalites added");
-        for (Functionality qf : functionalityRepository.findAll()) {
-            log.info(qf.toString());
-        }
+        quotationRepository.save(new Quotation("Sąd", "dodanie funkcji zwalniania niepokornych sędziów"));
+        quotationRepository.save(new Quotation("Sąd", "dodanie funkcji robienia kawy"));
+        quotationRepository.save(new Quotation("Sąd", "dodanie katalogu myślozbrodni"));
+        quotationRepository.save(new Quotation("Sąd", "dodanie możliwości samokrytyki"));
+        quotationRepository.save(new Quotation("Sąd", "dodanie przyspieszonej ścieżki awansu"));
+
+        }*/
     }
-}
+
