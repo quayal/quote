@@ -7,27 +7,26 @@ import javax.persistence.*;
 class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String itemName;
+    private Long Id;
+    private String name;
     private int itemTime;
-//    private Functionality quotationFunctionality;
     public Item(){}
 
     public Item(String name, int time) {
-        this.itemName = name;
+        this.name = name;
         this.itemTime = time;
     }
 
-    String getItemName() {
-        return itemName;
+    String getName() {
+        return name;
     }
 
     int getItemTime() {
         return itemTime;
     }
 
-    void setItemName(String itemName) {
-        this.itemName = itemName;
+    void setName(String name) {
+        this.name = name;
     }
 
     void setItemTime(int itemTime) {

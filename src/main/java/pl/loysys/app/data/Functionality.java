@@ -68,7 +68,7 @@ public class Functionality {
     }
 
     public List<String> listQuotationItemsNames() {
-        List<String> quotationItemsNames = items.stream().map(o -> o.getItemName()).collect(Collectors.toList());
+        List<String> quotationItemsNames = items.stream().map(o -> o.getName()).collect(Collectors.toList());
         return quotationItemsNames;
     }
 

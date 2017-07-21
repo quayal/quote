@@ -1,6 +1,5 @@
 package pl.loysys.app.data;
 
-import com.sun.org.apache.xpath.internal.operations.Quo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +21,7 @@ public class QuotationService {
         return new Quotation(client, name);
     }
 
-    public List<Quotation> getAllQuotations() {
+    public List<Quotation> getAllQuotations(Long id) {
         List<Quotation> quotationList = new ArrayList<>();
         quotationRepository.findAll().forEach(quotationList::add);
         return quotationList;

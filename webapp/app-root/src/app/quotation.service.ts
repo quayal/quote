@@ -2,10 +2,11 @@
  * Created by AdrianG on 18.07.2017.
  */
 import { Injectable } from '@angular/core';
-import {Headers, Http, Response} from '@angular/http';
+import { Headers, Http, Response } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import { Quotation } from './quotation';
+import Promise = jasmine.Promise;
 
 @Injectable()
 export class QuotationService {
@@ -14,17 +15,18 @@ export class QuotationService {
 
   constructor(private http: Http){}
 
-  getQuotations(): Promise<Quotation[]>{
-    return this.http.get(this.quotationUrl)
+  getAllQuotations(client: string): Promise<Quotation[]>{
+    const clientQuotationUrl = this.quotationUrl + "/" + client;
+    return this.http.get(clientQuotationUrl)
       .toPromise().then((response: Response) => response.json() as Quotation[])
   }
 
-  create(client: String, name: String): Promise<Quotation> {
+  createQuotation(client: String, name: String): Promise<Quotation> {
     return this.http
       .post(this.quotationUrl, JSON.stringify({client: client, name: name}), {headers: this.headers})
       .toPromise()
-      .then((res: Response) => res.json() as Quotation)
-  }l
+      .then((response: Response) => response.json() as Quotation)
+  }
 }
 
 

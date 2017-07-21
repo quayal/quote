@@ -1,3 +1,16 @@
-import
-export class Client {
+<h2>Klienci</h2>
+<ul>
+  <ul class="clients">
+    <li *ngFor="let client of clients; let i=index"
+        (click)="gotoClientQuotations(client)"
+        [class.selected]="client === selectedClient">
+      <span>{{i + 1}}</span>
+      <span>{{client.name}}</span>
+
+    </li>
+  </ul>
+  <div *ngIf="selectedHero">
+    <h2>{{selectedQuotation.name | uppercase}} is my quotation</h2>
+    <button (click)="gotoDetail()">View Details</button>
+  </div>
 

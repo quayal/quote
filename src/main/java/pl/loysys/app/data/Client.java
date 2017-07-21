@@ -14,7 +14,9 @@ public class Client {
     @ManyToMany
     private List<Quotation> quotations;
 
-    public Client(String name){
+    public Client(){}
+
+    Client(String name){
         this.name = name;
     }
 

@@ -3,7 +3,7 @@
  */
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Router, Route, ActivatedRoute} from '@angular/router';
 
 import { Quotation } from './quotation';
 import { QuotationService } from './quotation.service';
@@ -18,31 +18,41 @@ import { QuotationService } from './quotation.service';
 export class QuotationComponent implements OnInit {
   quotations: Quotation[];
   selectedQuotation: Quotation;
+  private sub: any;
+  private id: string;
+
 
   constructor(
     private quotationService: QuotationService,
-    private router: Router) {}
+    private router: Router,
+    private route: ActivatedRoute) {}
 
-  getQuotations(): void {
-    this.quotationService.getQuotations().then((res) =>{
+  getQuotations(clientID: String): void {
+    this.quotationService.getAllQuotations().then((res) =>{
        this.quotations = res;
     })
 }
+
   onSelect(quotation: Quotation) {
     this.selectedQuotation = quotation
   }
-  add(client: String, name : String): void {
+  addQuotation(client: String, name : String): void {
     name = name.trim();
     client = client.trim();
     if (!name || !client){return}
-    this.quotationService.create(client, name)
+    this.quotationService.createQuotation(client, name)
       .then(quotation => {
         this.quotations.push(quotation);
         this.selectedQuotation = null;
       })
   }
   ngOnInit(): void {
-    this.getQuotations();
+    this.sub = this.route.params.subscribe(params => {
+      if (params['clientId']) {
+        this.id = params['clientId'];
+        this.getQuotations(this.id);
+      }
+    });
   }
 
 

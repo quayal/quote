@@ -1,6 +1,6 @@
-<h2>Wyceny</h2>
+<h2>Wyceny {{quotation.client}}</h2>
 <ul>
-<ul class="quotations">
+<ul class="clients">
   <li *ngFor="let quotation of quotations"
       (click)="onSelect(quotation)"
       [class.selected]="quotation === selectedQuotation">

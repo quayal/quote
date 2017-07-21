@@ -8,17 +8,16 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/clients")
-public class ClientController {
-
-    public ClientController(){}
+@RequestMapping("/items")
+public class ItemController {
 
     @Autowired
-    ClientService clientService;
+    private ItemService itemService;
 
     @GetMapping
-    public List<Client> getClients() {
-        return clientService.getAllClients();
+    public List<Item> getItems() {
+        return itemService.getAllItems();
     }
+
 
 }

@@ -9,8 +9,10 @@ import java.util.List;
 @Service
 public class ClientService {
 
+    public ClientService() {}
+
     @Autowired
-    private ClientRepository clientRepository;
+    ClientRepository clientRepository;
 
     public Client addNewClient(String name) {
         return new Client(name);

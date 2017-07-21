@@ -5,13 +5,28 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 
 import { QuotationComponent } from './quotation.component';
+import  { ClientComponent } from './client.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'api/quotations',
+    redirectTo: 'clients',
     pathMatch: 'full'
-  }
+  },
+  {
+    path: 'quotations',
+    component: QuotationComponent
+  },
+  {
+    path: 'clients',
+    component: ClientComponent
+  },
+  {
+    path: ':clientId/quotations',
+    component: QuotationComponent
+  },
+
+
 ];
 
 @NgModule({
