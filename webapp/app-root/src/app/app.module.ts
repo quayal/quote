@@ -7,6 +7,7 @@ import {QuotationService} from "./quotation.service";
 import {QuotationComponent} from "./quotation.component";
 import {AppRoutingModule} from "./app.routing.module";
 import {ClientComponent} from "./client.component";
+import {ClientService} from "./client.service";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {ClientComponent} from "./client.component";
     HttpModule,
     AppRoutingModule
   ],
-  providers: [QuotationService],
+  providers: [QuotationService,
+              ClientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

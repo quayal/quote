@@ -11,7 +11,7 @@ public class Quotation {
     public Quotation() {
     }
 
-    public Quotation(String client, String name) {
+    public Quotation(Client client, String name) {
         this.client = client;
         this.name = name;
     }
@@ -20,10 +20,8 @@ public class Quotation {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
 
-
-    @Column(name = "client")
-    private String client;
-
+    @ManyToOne
+    private Client client;
 
     @Column
     private String name;
@@ -34,16 +32,16 @@ public class Quotation {
     @ManyToMany
     private List<Item> standaloneItems;
 
+    public void setClient(Client client){
+        this.client = client;
+    }
+
     public Long getId() {
         return Id;
     }
 
     public void setId(Long id) {
         Id = id;
-    }
-
-    public void setClient(String client) {
-        this.client = client;
     }
 
     public List<Functionality> getFunctionalities() {
@@ -62,10 +60,6 @@ public class Quotation {
         this.standaloneItems = standaloneItems;
     }
 
-
-    public String getClient() {
-        return client;
-    }
 
     public String getName() {
         return name;

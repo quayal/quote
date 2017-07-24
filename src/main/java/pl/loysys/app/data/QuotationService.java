@@ -14,16 +14,22 @@ public class QuotationService {
 
     public QuotationService(){}
 
-    public QuotationService(String client, String name){
+    public QuotationService(Client client, String name){
     }
 
-    public Quotation addNewQuotation(String client, String name) {
+    public Quotation addNewQuotation(Client client, String name) {
         return new Quotation(client, name);
     }
 
-    public List<Quotation> getAllQuotations(Long id) {
+    public List<Quotation> getAllQuotations() {
         List<Quotation> quotationList = new ArrayList<>();
         quotationRepository.findAll().forEach(quotationList::add);
         return quotationList;
+    }
+
+    public List<Quotation> getClientQuotations(Long id){
+        List<Quotation> clientsQuotations = new ArrayList<>();
+        quotationRepository.findByClientId(id).forEach(clientsQuotations::add);
+        return clientsQuotations;
     }
 }

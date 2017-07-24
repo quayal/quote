@@ -22,6 +22,11 @@ export class ClientService {
       .toPromise().then((response: Response) => response.json() as Client[])
   }
 
+  getClientDetails(clientId: string): Promise <Client> {
+    return this.http.get(this.clientUrl + "/" + clientId)
+      .toPromise().then((response: Response) => response.json() as Client)
+  }
+
   createClient(name: String): Promise<Client> {
     return this.http
       .post(this.clientUrl, JSON.stringify({name: String}), {headers: this.headers})

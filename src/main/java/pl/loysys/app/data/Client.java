@@ -1,5 +1,7 @@
 package pl.loysys.app.data;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -8,10 +10,10 @@ public class Client {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long Id;
+    private Long id;
     private String name;
 
-    @ManyToMany
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Quotation> quotations;
 
     public Client(){}
@@ -29,11 +31,11 @@ public class Client {
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {

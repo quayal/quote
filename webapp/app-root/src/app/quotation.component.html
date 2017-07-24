@@ -1,11 +1,10 @@
-<h2>Wyceny {{quotation.client}}</h2>
+<h2>Wyceny {{clientName}}</h2>
 <ul>
-<ul class="clients">
-  <li *ngFor="let quotation of quotations"
+<ul class="quotations">
+  <li *ngFor="let quotation of clientQuotations"
       (click)="onSelect(quotation)"
       [class.selected]="quotation === selectedQuotation">
     <span>{{quotation.id}}</span>
-    <span>{{quotation.client}}</span>
     <span>{{quotation.name}}</span>
 
   </li>

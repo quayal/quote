@@ -6,7 +6,6 @@ import { Headers, Http, Response } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import { Quotation } from './quotation';
-import Promise = jasmine.Promise;
 
 @Injectable()
 export class QuotationService {
@@ -15,7 +14,7 @@ export class QuotationService {
 
   constructor(private http: Http){}
 
-  getAllQuotations(client: string): Promise<Quotation[]>{
+  getClientQuotations(client: string): Promise<Quotation[]>{
     const clientQuotationUrl = this.quotationUrl + "/" + client;
     return this.http.get(clientQuotationUrl)
       .toPromise().then((response: Response) => response.json() as Quotation[])
@@ -27,6 +26,8 @@ export class QuotationService {
       .toPromise()
       .then((response: Response) => response.json() as Quotation)
   }
+
+
 }
 
 

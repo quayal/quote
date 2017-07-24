@@ -7,6 +7,7 @@ import {Router, Route, ActivatedRoute} from '@angular/router';
 
 import { Quotation } from './quotation';
 import { QuotationService } from './quotation.service';
+import {ClientService} from "./client.service";
 
 @Component({
   selector: 'quotations',
@@ -16,33 +17,35 @@ import { QuotationService } from './quotation.service';
 })
 
 export class QuotationComponent implements OnInit {
-  quotations: Quotation[];
+  clientQuotations: Quotation[];
   selectedQuotation: Quotation;
   private sub: any;
   private id: string;
+  private clientName: string;
 
 
-  constructor(
-    private quotationService: QuotationService,
-    private router: Router,
-    private route: ActivatedRoute) {}
+  constructor(private quotationService: QuotationService,
+              private clientService: ClientService,
+              private router: Router,
+              private route: ActivatedRoute) {}
 
-  getQuotations(clientID: String): void {
-    this.quotationService.getAllQuotations().then((res) =>{
-       this.quotations = res;
-    })
-}
 
+  getClientDetails(clientId: string): void {
+    this.clientService.getClientDetails(clientId).then((res =>{
+      this.clientQuotations = res.quotations;
+      this.clientName = res.name;
+    } ))
+  }
   onSelect(quotation: Quotation) {
     this.selectedQuotation = quotation
   }
-  addQuotation(client: String, name : String): void {
+  addQuotation(client: string, name : string): void {
     name = name.trim();
     client = client.trim();
     if (!name || !client){return}
     this.quotationService.createQuotation(client, name)
       .then(quotation => {
-        this.quotations.push(quotation);
+        this.clientQuotations.push(quotation);
         this.selectedQuotation = null;
       })
   }
@@ -50,7 +53,7 @@ export class QuotationComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       if (params['clientId']) {
         this.id = params['clientId'];
-        this.getQuotations(this.id);
+        this.getClientDetails(this.id);
       }
     });
   }

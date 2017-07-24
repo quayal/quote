@@ -20,12 +20,9 @@ public class QuotationController {
     QuotationService quotationService;
 
     @RequestMapping("/addNew")
-    public void newQuotation(String client, String name) {
+    public void newQuotation(Client client, String name) {
         quotationService.addNewQuotation(client, name);
     }
 
-    @GetMapping("quotations/{clientID}")
-    public List<Quotation> getQuotations(@PathVariable("clientID") Long id){
-        return quotationService.getAllQuotations(id);
-    }
+
 }

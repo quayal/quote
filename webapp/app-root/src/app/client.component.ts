@@ -7,6 +7,8 @@ import {OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ClientService} from "./client.service";
 import {Client} from "./client";
+import {Quotation} from "./quotation";
+import {QuotationService} from "./quotation.service";
 
 @Component({
   selector: 'clients',
@@ -18,6 +20,9 @@ import {Client} from "./client";
 export class ClientComponent implements OnInit {
   clients: Client[];
   selectedClient: Client;
+  quotations: Quotation[];
+  quotationService: QuotationService;
+  client: Client;
 
   constructor(private clientService: ClientService,
               private router: Router) {
@@ -28,10 +33,15 @@ export class ClientComponent implements OnInit {
       this.clients = res
     })
   }
+  getClientsDetails(clientID: string): void {
+    this.clientService.getClientDetails(clientID).then((res) =>{
+      this.client = res;
+    })
+  }
 
   gotoClientQuotations(client: Client): void {
     this.selectedClient = client;
-    this.router.navigate([this.selectedClient.id, 'quotations']);
+    this.router.navigate(['clients', this.selectedClient.id]);
   }
 
 

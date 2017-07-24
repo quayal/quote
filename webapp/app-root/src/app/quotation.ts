@@ -4,5 +4,6 @@
 
 export class Quotation {
   id: number;
+  clientName: string;
   name: string;
 }

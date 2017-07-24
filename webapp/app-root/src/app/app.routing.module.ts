@@ -22,7 +22,7 @@ const routes: Routes = [
     component: ClientComponent
   },
   {
-    path: ':clientId/quotations',
+    path: 'clients/:clientId',
     component: QuotationComponent
   },
 

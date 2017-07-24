@@ -13,6 +13,8 @@ public class ClientService {
 
     @Autowired
     ClientRepository clientRepository;
+    @Autowired
+    QuotationRepository quotationRepository;
 
     public Client addNewClient(String name) {
         return new Client(name);
@@ -22,5 +24,8 @@ public class ClientService {
         List<Client> clientList = new ArrayList<>();
         clientRepository.findAll().forEach(clientList::add);
         return clientList;
+    }
+    public Client getClientDetails(Long id){
+        return clientRepository.findById(id);
     }
 }
