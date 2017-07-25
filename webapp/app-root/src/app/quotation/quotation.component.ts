@@ -7,7 +7,7 @@ import {Router, Route, ActivatedRoute} from '@angular/router';
 
 import { Quotation } from './quotation';
 import { QuotationService } from './quotation.service';
-import {ClientService} from "./client.service";
+import {ClientService} from "../client/client.service";
 
 @Component({
   selector: 'quotations',
@@ -29,16 +29,23 @@ export class QuotationComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute) {}
 
-
   getClientDetails(clientId: string): void {
     this.clientService.getClientDetails(clientId).then((res =>{
       this.clientQuotations = res.quotations;
       this.clientName = res.name;
     } ))
   }
+
   onSelect(quotation: Quotation) {
     this.selectedQuotation = quotation
   }
+
+  gotoQuotationFunctionalities(quotation: Quotation): void {
+    this.selectedQuotation = quotation;
+    this.router.navigate(['quotations', this.selectedQuotation.id]);
+
+  }
+
   addQuotation(client: string, name : string): void {
     name = name.trim();
     client = client.trim();
@@ -49,6 +56,7 @@ export class QuotationComponent implements OnInit {
         this.selectedQuotation = null;
       })
   }
+
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
       if (params['clientId']) {

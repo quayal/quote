@@ -4,8 +4,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 
-import { QuotationComponent } from './quotation.component';
-import  { ClientComponent } from './client.component';
+import { QuotationComponent } from './quotation/quotation.component';
+import  { ClientComponent } from './client/client.component';
 
 const routes: Routes = [
   {
@@ -14,20 +14,10 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'quotations',
-    component: QuotationComponent
-  },
-  {
     path: 'clients',
     component: ClientComponent
-  },
-  {
-    path: 'clients/:clientId',
-    component: QuotationComponent
-  },
-
-
-];
+  }
+  ];
 
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],

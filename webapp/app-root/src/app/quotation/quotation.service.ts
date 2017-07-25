@@ -6,6 +6,7 @@ import { Headers, Http, Response } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import { Quotation } from './quotation';
+import {Functionality} from "../functionality/functionality";
 
 @Injectable()
 export class QuotationService {
@@ -14,10 +15,9 @@ export class QuotationService {
 
   constructor(private http: Http){}
 
-  getClientQuotations(client: string): Promise<Quotation[]>{
-    const clientQuotationUrl = this.quotationUrl + "/" + client;
-    return this.http.get(clientQuotationUrl)
-      .toPromise().then((response: Response) => response.json() as Quotation[])
+  getQuotationDetails(quotationId: string): Promise<Quotation>{
+    return this.http.get(this.quotationUrl + "/" + quotationId)
+      .toPromise().then((response: Response) => response.json() as Quotation)
   }
 
   createQuotation(client: String, name: String): Promise<Quotation> {

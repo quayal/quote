@@ -1,4 +1,4 @@
-import {Quotation} from "./quotation";
+import {Quotation} from "../quotation/quotation";
 
 export class Client {
   id: number;

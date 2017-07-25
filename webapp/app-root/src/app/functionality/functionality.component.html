@@ -2,9 +2,10 @@
 <ul>
   <ul class="functionalities">
     <li *ngFor="let functionality of functionalities"
-        (click)="onSelect(functionality)"
+        (click)="gotoFunctionalityItems(functionality)"
         [class.selected]="functionality === selectedFunctionality">
       <span>{{functionality.id}}</span>
       <span>{{functionality.name}}</span>
-
     </li>
+  </ul>
+</ul>
