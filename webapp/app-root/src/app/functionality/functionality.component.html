@@ -1,11 +1,16 @@
-<h2>Funkcjonalności</h2>
+<div [hidden]="router.url.indexOf('items') > -1">
+
+<h2>Elementy funkcjonalności {{functionalityName}}</h2>
 <ul>
-  <ul class="functionalities">
-    <li *ngFor="let functionality of functionalities"
-        (click)="gotoFunctionalityItems(functionality)"
-        [class.selected]="functionality === selectedFunctionality">
-      <span>{{functionality.id}}</span>
-      <span>{{functionality.name}}</span>
+  <ul class="items">
+    <li *ngFor="let item of functionalityItems"
+        (click)="gotoItemDetail(item)"
+        [class.selected]="item === selectedItem">
+      <span>{{item.id}}</span>
+      <span>{{item.name}}</span>
     </li>
   </ul>
 </ul>
+</div>
+
+<router-outlet></router-outlet>

@@ -4,5 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface FunctionalityRepository extends CrudRepository<Functionality, Long>{
 
-    Functionality findByFunctionalityName(String functionalityName);
+    Functionality findByName(String functionalityName);
+    Functionality findById(Long id);
 }

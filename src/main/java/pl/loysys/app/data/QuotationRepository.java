@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface QuotationRepository extends CrudRepository<Quotation, Long>{
     List<Quotation> findByClientId(Long clientId);
-    Quotation findByName(String quotationName);
+    Quotation findById(Long id);
 }

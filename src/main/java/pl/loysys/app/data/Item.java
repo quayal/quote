@@ -1,36 +1,44 @@
 package pl.loysys.app.data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "item")
+@Table(name = "items")
 class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
+    private Long id;
+
     private String name;
-    private int itemTime;
+
+    private int time;
+
     public Item(){}
+
+    @ManyToMany(mappedBy = "items")
+    List<Functionality> functionalites = new ArrayList<>();
 
     public Item(String name, int time) {
         this.name = name;
-        this.itemTime = time;
+        this.time = time;
     }
 
     String getName() {
         return name;
     }
 
-    int getItemTime() {
-        return itemTime;
+    int getTime() {
+        return time;
     }
 
     void setName(String name) {
         this.name = name;
     }
 
-    void setItemTime(int itemTime) {
-        this.itemTime = itemTime;
+    void setTime(int time) {
+        this.time = time;
     }
 
 }

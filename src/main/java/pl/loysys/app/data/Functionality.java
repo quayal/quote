@@ -1,6 +1,8 @@
 package pl.loysys.app.data;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import javax.persistence.*;
 
@@ -13,44 +15,49 @@ public class Functionality {
     private Long id;
 
     @Column(name = "functionality_name")
-    private String functionalityName;
+    private String name;
 
     @Column(name = "functionality_time")
-    private int functionalityTime;
+    private int time;
 
-    @ManyToMany
-    private List<Item> items;
+    @ManyToMany(mappedBy = "functionalities")
+    private List<Quotation> quotations = new ArrayList<>();
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "functionalities_items", joinColumns = @JoinColumn(name = "functionality_id"),
+            inverseJoinColumns = @JoinColumn(name = "item_id"))
+    private Set<Item> items;
 
     protected Functionality() {
     }
 
     public Functionality(String functionalityName) {
-        this.functionalityName = functionalityName;
+        this.name = functionalityName;
     }
 
-    public Functionality(String functionalityName, List<Item> items) {
-        this.functionalityName = functionalityName;
+    public Functionality(String functionalityName, Set<Item> items) {
+        this.name = functionalityName;
         this.items = items;
     }
 
-    public String getFunctionalityName() {
-        return functionalityName;
+    public String getName() {
+        return name;
     }
 
     public Long getId() {
         return id;
     }
 
-    public int getFunctionalityTime() {
-        return functionalityTime;
+    public int getTime() {
+        return time;
     }
 
-    public void setFunctionalityName(String functionalityName) {
-        this.functionalityName = functionalityName;
+    public void setName(String functionalityName) {
+        this.name = functionalityName;
     }
 
-    public void setFunctionalityTime(int functionalityTime) {
-        this.functionalityTime = functionalityTime;
+    public void setTime(int functionalityTime) {
+        this.time = functionalityTime;
     }
 
     public void addItem(Item item) {
@@ -59,11 +66,11 @@ public class Functionality {
 
     private int calculateQuotationTime() {
         int totalQuotationTime;
-        totalQuotationTime = items.stream().mapToInt(o -> o.getItemTime()).sum();
+        totalQuotationTime = items.stream().mapToInt(o -> o.getTime()).sum();
         return totalQuotationTime;
     }
 
-    public List<Item> getItems() {
+    public Set<Item> getItems() {
         return items;
     }
 
@@ -73,6 +80,6 @@ public class Functionality {
     }
 
     public String toString() {
-        return String.format("Nazwa funkcjonalności: %s, czas wykonania: %d", getFunctionalityName(), getFunctionalityTime());
+        return String.format("Nazwa funkcjonalności: %s, czas wykonania: %d", getName(), getTime());
     }
 }

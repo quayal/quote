@@ -2,13 +2,16 @@
   background-color: #CFD8DC !important;
   color: white
 }
-.quotations {
+.header {
+  font-family: "Lucida Sans Unicode";
+}
+.clients {
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
   width: 15em;
 }
-.quotations li {
+.clients li {
   cursor: pointer;
   position: relative;
   left: 0;
@@ -18,20 +21,21 @@
   height: 1.6em;
   border-radius: 4px;
 }
-.quotations li.selected:hover {
+.clients li.selected:hover {
   background-color: #BBD8DC !important;
   color: white;
 }
-.quotations li:hover {
+.clients li:hover {
   color: #607D8B;
   background-color: #DDD;
   left: .1em;
 }
-.quotations .text {
+.clients .text {
   position: relative;
+  font-family: "Lucida Sans Unicode";
   top: -3px;
 }
-.quotations .badge {
+.clients .badge {
   display: inline-block;
   font-size: small;
   color: white;

@@ -8,8 +8,8 @@ import {Item} from "./item";
 
 @Component({
   selector: 'items',
-  templateUrl: './items.component.html',
-  styleUrls:['./items.component.css'],
+  templateUrl: './item.component.html',
+  styleUrls:['./item.component.css'],
   providers: [ ItemService ]
 })
 
@@ -29,7 +29,7 @@ export class ItemComponent implements OnInit {
 
 
   getFunctionalityDetails(functionalityId: string): void {
-    this.functionalityService.getFunctionalityDetais(functionalityId).then((res =>{
+    this.functionalityService.getFunctionalityDetails(functionalityId).then((res =>{
       this.items = res.functionalityItems;
       this.functionalityName = res.name;
     } ))

@@ -3,18 +3,21 @@ import {Functionality} from "./functionality";
 import {FunctionalityService} from "./functionality.service";
 import {QuotationService} from "../quotation/quotation.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {Item} from "../item/item";
 
 @Component({
   selector: 'functionalities',
-  templateUrl: './functionalites.component.html',
-  styleUrls:['./functionalities.component.css'],
+  templateUrl: './functionality.component.html',
+  styleUrls:['./functionality.component.css'],
   providers: [ FunctionalityService ]
 })
 
 export class FunctionalityComponent implements OnInit {
 
   private quotationName: string;
-  private quotationFunctionalities: Functionality[];
+  functionalityName: string;
+  functionalityTime: number;
+  functionalityItems: Item[];
   private selectedFunctionality: Functionality;
   private sub: any;
   private id: string;
@@ -26,24 +29,20 @@ export class FunctionalityComponent implements OnInit {
     private route: ActivatedRoute
   ){}
 
-  gotoFunctionalityItems(functionality: Functionality){
-      this.selectedFunctionality = functionality;
-      this.router.navigate(['functionalities', this.selectedFunctionality.id])
-        }
+ getFunctionalityDetails(functionalityId): void {
+      this.functionalityService.getFunctionalityDetails(functionalityId).then((res => {
+        this.functionalityName = res.name;
+        this.functionalityTime = res.time;
+        this.functionalityItems = res.functionalityItems;
+      }))
 
-  getQuotationDetails(quotationId): void {
-    this.quotationService.getQuotationDetails(quotationId).then((res => {
-        this.quotationName = res.name;
-        this.quotationFunctionalities = res.functionalities
-      }
-      ));
-    };
+ }
 
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
-      if (params['quotationId']) {
-        this.id = params['quotationId'];
-        this.getQuotationDetails(this.id);
+      if (params['functionalityId']) {
+        this.id = params['functionalityId'];
+        this.getFunctionalityDetails(this.id);
       }
     });
   }

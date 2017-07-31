@@ -6,7 +6,6 @@ import { Headers, Http, Response } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import { Quotation } from './quotation';
-import {Functionality} from "../functionality/functionality";
 
 @Injectable()
 export class QuotationService {

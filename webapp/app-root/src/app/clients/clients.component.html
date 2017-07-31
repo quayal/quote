@@ -1,0 +1,13 @@
+<div [hidden]="checkIfChildUrl()">
+<h2 class="header">Klienci</h2>
+<ul>
+  <ul class="clients">
+    <li *ngFor="let client of clients"
+        (click)="gotoClientDetails(client)"
+        [class.selected]="client === selectedClient">
+      <span class="text">{{client.name}}</span>
+    </li>
+  </ul>
+</ul>
+</div>
+<router-outlet></router-outlet>

@@ -10,8 +10,7 @@ const quotationRoutes: Routes = [
     component: QuotationComponent,
     children: [
       {
-        path:'quotations/:quotationId',
-        component: FunctionalityComponent
+        path:'functionalities/:functionalityId', loadChildren: 'app/functionality/functionality.module#FunctionalityModule'
       }
     ]
   },

@@ -1,17 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
-
-import { QuotationComponent } from '../quotation/quotation.component';
 import  { ClientComponent } from './client.component';
 
 const clientRoutes: Routes = [
   {
-    path: 'clients',
+    path: '',
     component: ClientComponent,
     children: [
       {
-        path:':clientId',
-        component: QuotationComponent
+        path:'quotations/:quotationId', loadChildren: 'app/quotation/quotation.module#QuotationModule'
       }
     ]
   },

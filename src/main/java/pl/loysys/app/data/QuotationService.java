@@ -32,4 +32,9 @@ public class QuotationService {
         quotationRepository.findByClientId(id).forEach(clientsQuotations::add);
         return clientsQuotations;
     }
+
+    public Quotation getQuotationDetails(Long id){
+        return quotationRepository.findById(id);
+    }
+
 }

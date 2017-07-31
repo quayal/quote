@@ -10,7 +10,6 @@ import {Client} from "./client";
 import {Quotation} from "../quotation/quotation";
 
 @Component({
-  selector: 'clients',
   templateUrl: './client.component.html',
   styleUrls: ['./client.component.css'],
   providers: [ClientService]
@@ -18,10 +17,13 @@ import {Quotation} from "../quotation/quotation";
 
 export class ClientComponent implements OnInit {
   id: string;
-  selectedClient: Client;
-  quotations: Quotation[];
+  sub: any;
+  selectedQuotation: Quotation;
   client: Client;
   clients: Client[];
+  clientName: string;
+  clientQuotations: Quotation[];
+
 
   constructor(
     private clientService: ClientService,
@@ -29,18 +31,24 @@ export class ClientComponent implements OnInit {
               private router: Router) {
   }
 
-  getClients(): void {
-    this.clientService.getAllClients().then(res => {
-      this.clients = res;
-    })
-  }
+  getClientDetails(clientId): void {
+    this.clientService.getClientDetails(clientId).then((res => {
+        this.clientName = res.name;
+        this.clientQuotations = res.quotations
+      }
+    ));
+  };
 
-  gotoClientQuotations(client: Client): void {
-    this.selectedClient = client;
-    this.router.navigate(['clients', this.selectedClient.id]);
+  gotoQuotationDetails(quotation: Quotation): void {
+    this.selectedQuotation = quotation;
+    this.router.navigate(['../quotations', this.selectedQuotation.id], {relativeTo: this.route});
   }
-
-  ngOnInit() {
-    this.getClients()
+    ngOnInit(): void {
+    this.sub = this.route.params.subscribe(params => {
+      if (params['clientId']) {
+        this.id = params['clientId'];
+        this.getClientDetails(this.id);
+      }
+    });
   }
 }

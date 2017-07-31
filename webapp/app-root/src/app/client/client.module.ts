@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import {ClientComponent} from "./client.component";
 import {ClientService} from "./client.service";
 import {ClientRoutingModule} from "./client.routing.module";
+import {QuotationModule} from "../quotation/quotation.module";
 
 
 @NgModule({
   imports: [
     CommonModule,
-    ClientRoutingModule
+    ClientRoutingModule,
+    QuotationModule
   ],
   declarations: [
     ClientComponent

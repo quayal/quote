@@ -13,7 +13,7 @@ export class FunctionalityService {
   constructor(private http: Http) {
   }
 
-  public getFunctionalityDetais(functionalityId: string): Promise<Functionality> {
+  public getFunctionalityDetails(functionalityId: string): Promise<Functionality> {
     return this.http.get(this.functionalityUrl + "/" + functionalityId)
       .toPromise().then((response: Response) => response.json() as Functionality)
   }

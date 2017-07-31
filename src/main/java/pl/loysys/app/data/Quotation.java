@@ -5,8 +5,26 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "quotation")
+@Table(name = "quotations")
 public class Quotation {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column
+    private String name;
+
+    @Column
+    private int time;
+
+    @ManyToOne
+    private Client client;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "quotations_functionalities", joinColumns = @JoinColumn(name = "quotation_id"),
+            inverseJoinColumns = @JoinColumn(name = "functionality_id"))
+    private List<Functionality> functionalities;
 
     public Quotation() {
     }
@@ -16,32 +34,23 @@ public class Quotation {
         this.name = name;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
-
-    @ManyToOne
-    private Client client;
-
-    @Column
-    private String name;
-
-    @ManyToMany
-    private List<Functionality> functionalities;
-
-    @ManyToMany
-    private List<Item> standaloneItems;
-
     public void setClient(Client client){
         this.client = client;
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
+    }
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
     }
 
     public List<Functionality> getFunctionalities() {
@@ -51,15 +60,6 @@ public class Quotation {
     public void setFunctionalities(List<Functionality> functionalities) {
         this.functionalities = functionalities;
     }
-
-    public List<Item> getStandaloneItems() {
-        return standaloneItems;
-    }
-
-    public void setStandaloneItems(List<Item> standaloneItems) {
-        this.standaloneItems = standaloneItems;
-    }
-
 
     public String getName() {
         return name;

@@ -1,0 +1,11 @@
+<h2>Elementy</h2>
+<ul>
+  <ul class="items">
+    <li *ngFor="let item of items"
+        (click)="editItem(item)"
+        [class.selected]="item === selectedItem">
+      <span>{{item.id}}</span>
+      <span>{{item.name}}</span>
+    </li>
+  </ul>
+</ul>

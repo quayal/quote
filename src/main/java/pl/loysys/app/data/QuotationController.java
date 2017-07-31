@@ -19,6 +19,11 @@ public class QuotationController {
     @Autowired
     QuotationService quotationService;
 
+    @GetMapping("/{quotationId}")
+    public Quotation getQuotationDetails(@PathVariable("quotationId") Long quotationId) {
+        return quotationService.getQuotationDetails(quotationId);
+    }
+
     @RequestMapping("/addNew")
     public void newQuotation(Client client, String name) {
         quotationService.addNewQuotation(client, name);

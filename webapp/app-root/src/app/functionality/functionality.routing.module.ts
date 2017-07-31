@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 
 import { FunctionalityComponent } from './functionality.component';
-import { ItemComponent } from './item.component';
+import { ItemComponent } from '../item/item.component';
 
 const quotationRoutes: Routes = [
   {

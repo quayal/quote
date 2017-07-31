@@ -1,15 +1,19 @@
-<h2>Wyceny {{clientName}}</h2>
+<div [hidden]="router.url.indexOf('functionalities') > -1">
+<h2>Funkcjonalności wyceny {{quotationName}}</h2>
 <ul>
-<ul class="quotations">
-  <li *ngFor="let quotation of clientQuotations"
-      (click)="gotoQuotationFunctionalities(quotation)"
-      [class.selected]="quotation === selectedQuotation">
-    <span>{{quotation.id}}</span>
-    <span>{{quotation.name}}</span>
-
+<ul class="functionalities">
+  <li *ngFor="let functionality of quotationFunctionalities"
+      (click)="gotoFunctionalityDetails(functionality)"
+      [class.selected]="functionality === selectedFunctionality">
+    <span>{{functionality.id}}</span>
+    <span>{{functionality.name}}</span>
+    <span>{{functionality.time}}</span>
   </li>
 </ul>
 </ul>
+</div>
+
+<router-outlet></router-outlet>
 
   <!--<div *ngIf="selectedHero">
   <h2>{{selectedQuotation.name | uppercase}} is my quotation</h2>

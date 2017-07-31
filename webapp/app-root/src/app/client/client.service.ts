@@ -29,7 +29,7 @@ export class ClientService {
 
   createClient(name: String): Promise<Client> {
     return this.http
-      .post(this.clientUrl, JSON.stringify({name: String}), {headers: this.headers})
+      .post(this.clientUrl, JSON.stringify({name: name}), {headers: this.headers})
       .toPromise()
       .then((response: Response) => response.json() as Client)
   }

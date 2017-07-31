@@ -15,7 +15,7 @@ public class ItemService {
     @Autowired
     private ItemRepository itemRepository;
 
-    public Item addNew(String name, int time) {
+    public Item createNew(String name, int time) {
         return new Item(name, time);
     }
 
