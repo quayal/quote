@@ -1,12 +1,14 @@
 package pl.loysys.app.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "items")
-class Item {
+public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -15,7 +17,8 @@ class Item {
 
     private int time;
 
-    public Item(){}
+    public Item() {
+    }
 
     @ManyToMany(mappedBy = "items")
     List<Functionality> functionalites = new ArrayList<>();
@@ -25,20 +28,28 @@ class Item {
         this.time = time;
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
 
-    int getTime() {
-        return time;
-    }
-
-    void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    void setTime(int time) {
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
         this.time = time;
     }
 
+    @JsonIgnore
+    public List<Functionality> getFunctionalites() {
+        return functionalites;
+    }
+
+    public void setFunctionalites(List<Functionality> functionalities) {
+        this.functionalites = functionalities;
+    }
 }

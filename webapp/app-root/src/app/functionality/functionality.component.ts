@@ -33,7 +33,7 @@ export class FunctionalityComponent implements OnInit {
       this.functionalityService.getFunctionalityDetails(functionalityId).then((res => {
         this.functionalityName = res.name;
         this.functionalityTime = res.time;
-        this.functionalityItems = res.functionalityItems;
+        this.functionalityItems = res.items;
       }))
 
  }

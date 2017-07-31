@@ -15,10 +15,10 @@ public class ClientController {
     public ClientController(){}
 
     @Autowired
-    ClientService clientService;
+    private ClientService clientService;
 
     @Autowired
-    QuotationService quotationService;
+    private QuotationService quotationService;
 
     @GetMapping
     public List<Client> getClients() {

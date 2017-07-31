@@ -5,5 +5,5 @@ export class Functionality {
   name: string;
   id: number;
   time: number;
-  functionalityItems: Item[];
+  items: Item[];
 }

@@ -30,7 +30,7 @@ export class ItemComponent implements OnInit {
 
   getFunctionalityDetails(functionalityId: string): void {
     this.functionalityService.getFunctionalityDetails(functionalityId).then((res =>{
-      this.items = res.functionalityItems;
+      this.items = res.items;
       this.functionalityName = res.name;
     } ))
   }

@@ -28,13 +28,5 @@ public class FunctionalityService {
         return functionalityRepository.findById(id);
     }
 
-/*    public FunctionalityTO transformerFunctionality(Functionality functionality) {
-        FunctionalityTO functionalityTO = new FunctionalityTO();
-        functionalityTO.setName(functionality.getName());
-        functionalityTO.setId(functionality.getId());
-        functionalityTO.setItems(functionality.getItems());
-
-        return functionalityTO;
-    }*/
 }
 
