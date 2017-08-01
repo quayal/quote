@@ -16,8 +16,8 @@ public class ClientService {
     @Autowired
     QuotationRepository quotationRepository;
 
-    public Client addNewClient(String name) {
-        return new Client(name);
+    public Client addNewClient(Client client) {
+        return clientRepository.save(client);
     }
 
     public List<Client> getAllClients() {

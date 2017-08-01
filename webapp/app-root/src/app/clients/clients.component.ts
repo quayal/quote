@@ -11,6 +11,7 @@ export class ClientsComponent implements OnInit {
 
   clients: Client[];
   selectedClient: Client;
+  newClientName: string;
 
 
   constructor(
@@ -26,6 +27,13 @@ export class ClientsComponent implements OnInit {
   checkIfChildUrl(): boolean {
     let regex = new RegExp('^\/clients\/.+$');
     return regex.test(this.router.url);
+}
+
+  addClient(): void {
+    this.clientService.createClient(this.newClientName).then(() =>{this.clientService.getAllClients()
+      .then(res =>{
+        this.clients = res;
+      })})
 }
 
   ngOnInit(){

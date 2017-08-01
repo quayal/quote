@@ -1,10 +1,7 @@
 package pl.loysys.app.data;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -12,7 +9,8 @@ import java.util.List;
 @RequestMapping("/clients")
 public class ClientController {
 
-    public ClientController(){}
+    public ClientController() {
+    }
 
     @Autowired
     private ClientService clientService;
@@ -26,16 +24,13 @@ public class ClientController {
     }
 
     @GetMapping("/{clientId}")
-    public Client getClientDetails(@PathVariable("clientId") Long id){
+    public Client getClientDetails(@PathVariable("clientId") Long id) {
         return clientService.getClientDetails(id);
 
-        }
+    }
 
-    /* @GetMapping("/{clientId}")
-    public List<Quotation> getQuotations(@PathVariable("clientId") Long id){
-        return quotationService.getClientQuotations(id);
-    }*/
-
-
-
+    @RequestMapping(method = RequestMethod.POST, value = "/new")
+    public Client addClient(@RequestBody Client client) {
+        return clientService.addNewClient(client);
+    }
 }

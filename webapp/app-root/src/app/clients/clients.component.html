@@ -1,6 +1,5 @@
 <div [hidden]="checkIfChildUrl()">
 <h2 class="header">Klienci</h2>
-<ul>
   <ul class="clients">
     <li *ngFor="let client of clients"
         (click)="gotoClientDetails(client)"
@@ -8,6 +7,7 @@
       <span class="text">{{client.name}}</span>
     </li>
   </ul>
-</ul>
+  <input [(ngModel)]="newClientName" placeholder="nowy klient">
+  <button (click)="addClient()">Dodaj</button>
 </div>
 <router-outlet></router-outlet>

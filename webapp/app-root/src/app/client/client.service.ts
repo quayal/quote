@@ -27,10 +27,15 @@ export class ClientService {
       .toPromise().then((response: Response) => response.json() as Client)
   }
 
-  createClient(name: String): Promise<Client> {
+/*  createClient(name: String):  {
     return this.http
-      .post(this.clientUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .post(this.clientUrl + "/new", JSON.stringify({name: name}), {headers: this.headers})
       .toPromise()
+      .then((response: Response) => response.json() as Client)
+  } */
+
+  createClient(name: String): Promise<Client> {
+  return this.http.post(this.clientUrl + "/new", {name: name}, {headers: this.headers}).toPromise()
       .then((response: Response) => response.json() as Client)
   }
 }

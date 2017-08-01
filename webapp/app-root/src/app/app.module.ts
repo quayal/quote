@@ -9,6 +9,7 @@ import {ClientService} from "./client/client.service";
 import {ClientModule} from "./client/client.module";
 import { ClientsComponent } from './clients/clients.component';
 import {ClientsModule} from "./clients/clients.module";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import {ClientsModule} from "./clients/clients.module";
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     ClientsModule,
     ClientModule,
