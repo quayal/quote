@@ -28,4 +28,8 @@ public class ClientService {
     public Client getClientDetails(Long id){
         return clientRepository.findById(id);
     }
+
+    public Client getClientById(Long id) {
+        return clientRepository.findById(id);
+    }
 }

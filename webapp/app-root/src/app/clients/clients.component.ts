@@ -13,7 +13,6 @@ export class ClientsComponent implements OnInit {
   selectedClient: Client;
   newClientName: string;
 
-
   constructor(
     private clientService: ClientService,
     private router: Router
@@ -30,11 +29,8 @@ export class ClientsComponent implements OnInit {
 }
 
   addClient(): void {
-    this.clientService.createClient(this.newClientName).then(() =>{this.clientService.getAllClients()
-      .then(res =>{
-        this.clients = res;
-      })})
-}
+    this.clientService.createClient(this.newClientName).then(() => this.clientService.getAllClients())
+ }
 
   ngOnInit(){
     this.clientService.getAllClients().then(res => {

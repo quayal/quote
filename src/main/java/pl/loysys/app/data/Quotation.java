@@ -1,5 +1,7 @@
 package pl.loysys.app.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Column;
 import javax.persistence.*;
 import java.util.List;
@@ -18,8 +20,11 @@ public class Quotation {
     @Column
     private int time;
 
-    @ManyToOne
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "client_id")
     private Client client;
+
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "quotations_functionalities", joinColumns = @JoinColumn(name = "quotation_id"),
@@ -27,6 +32,10 @@ public class Quotation {
     private List<Functionality> functionalities;
 
     public Quotation() {
+    }
+
+    public Quotation(String name) {
+        this.name = name;
     }
 
     public Quotation(Client client, String name) {
@@ -67,5 +76,9 @@ public class Quotation {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Client getClient() {
+        return client;
     }
 }

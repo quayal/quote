@@ -1,5 +1,7 @@
 <div [hidden]="router.url.indexOf('quotations') > -1">
   <h2>Wyceny {{clientName}}</h2>
+  <input [(ngModel)]="newQuotationName" placeholder="nowa wycena klienta">
+  <button (click)="addQuotation()">Dodaj</button>
 <ul>
   <ul class="quotations">
     <li *ngFor="let quotation of clientQuotations"

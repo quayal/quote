@@ -5,7 +5,7 @@ import {Functionality} from "../functionality/functionality";
 
 export class Quotation {
   id: number;
-  clientName: string;
+  clientId: number;
   name: string;
   functionalities: Functionality[];
 }

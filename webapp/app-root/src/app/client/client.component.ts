@@ -8,6 +8,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ClientService} from "./client.service";
 import {Client} from "./client";
 import {Quotation} from "../quotation/quotation";
+import {QuotationService} from "../quotation/quotation.service";
 
 @Component({
   templateUrl: './client.component.html',
@@ -23,12 +24,13 @@ export class ClientComponent implements OnInit {
   clients: Client[];
   clientName: string;
   clientQuotations: Quotation[];
+  newQuotationName: string;
 
 
-  constructor(
-    private clientService: ClientService,
-    private route: ActivatedRoute,
-              private router: Router) {
+  constructor(private clientService: ClientService,
+              private route: ActivatedRoute,
+              private router: Router,
+              private quotationService: QuotationService) {
   }
 
   getClientDetails(clientId): void {
@@ -39,11 +41,17 @@ export class ClientComponent implements OnInit {
     ));
   };
 
+  addQuotation(): void {
+    this.quotationService.createQuotation(this.id, this.newQuotationName).then(() => this.getClientDetails(this.id))
+  }
+
+
   gotoQuotationDetails(quotation: Quotation): void {
     this.selectedQuotation = quotation;
     this.router.navigate(['../quotations', this.selectedQuotation.id], {relativeTo: this.route});
   }
-    ngOnInit(): void {
+
+  ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
       if (params['clientId']) {
         this.id = params['clientId'];

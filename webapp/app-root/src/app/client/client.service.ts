@@ -35,7 +35,7 @@ export class ClientService {
   } */
 
   createClient(name: String): Promise<Client> {
-  return this.http.post(this.clientUrl + "/new", {name: name}, {headers: this.headers}).toPromise()
+  return this.http.post(this.clientUrl, {name: name}, {headers: this.headers}).toPromise()
       .then((response: Response) => response.json() as Client)
   }
 }

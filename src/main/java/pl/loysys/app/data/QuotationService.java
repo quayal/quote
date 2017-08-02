@@ -11,14 +11,18 @@ public class QuotationService {
 
     @Autowired
     private QuotationRepository quotationRepository;
+    @Autowired
+    private ClientRepository clientRepository;
 
     public QuotationService(){}
 
     public QuotationService(Client client, String name){
     }
 
-    public Quotation addNewQuotation(Client client, String name) {
-        return new Quotation(client, name);
+    public QuotationTO addQuotation(QuotationTO quotationTO) {
+        Quotation toSave = new Quotation(clientRepository.findById(quotationTO.getClientId()), quotationTO.getName());
+        quotationRepository.save(toSave);
+        return quotationTO;
     }
 
     public List<Quotation> getAllQuotations() {
