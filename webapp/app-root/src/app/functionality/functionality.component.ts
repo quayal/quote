@@ -16,7 +16,7 @@ export class FunctionalityComponent implements OnInit {
 
   private quotationName: string;
   functionalityName: string;
-  functionalityTime: number;
+  functionalityWorkload: number;
   functionalityItems: Item[];
   private selectedFunctionality: Functionality;
   private sub: any;
@@ -32,7 +32,7 @@ export class FunctionalityComponent implements OnInit {
  getFunctionalityDetails(functionalityId): void {
       this.functionalityService.getFunctionalityDetails(functionalityId).then((res => {
         this.functionalityName = res.name;
-        this.functionalityTime = res.time;
+        this.functionalityWorkload = res.workload;
         this.functionalityItems = res.items;
       }))
 

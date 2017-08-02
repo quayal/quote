@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/functionalities")
 public class FunctionalityController {
@@ -15,10 +17,11 @@ public class FunctionalityController {
     @Autowired
     ItemService itemService;
 
-    @RequestMapping("/addNew")
-    public void newFunctionality(String name) {
-        functionalityService.addNew(name);
+    @GetMapping
+    public List<Functionality> getAllFunctionalities() {
+        return functionalityService.getAllFunctionalities();
     }
+
 
     @RequestMapping("/newItem")
     public void newItem(String name, int time) {

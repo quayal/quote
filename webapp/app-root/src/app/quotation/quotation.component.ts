@@ -7,8 +7,9 @@ import {Router, Route, ActivatedRoute} from '@angular/router';
 
 import { Quotation } from './quotation';
 import { QuotationService } from './quotation.service';
-import {ClientService} from "../client/client.service";
 import {Functionality} from "../functionality/functionality";
+import {SelectItem} from 'primeng/primeng';
+import {FunctionalityService} from "../functionality/functionality.service";
 
 @Component({
   selector: 'quotations',
@@ -20,21 +21,35 @@ import {Functionality} from "../functionality/functionality";
 export class QuotationComponent implements OnInit {
   quotationName: string;
   quotationFunctionalities: Functionality[];
+  quotationWorkload: number;
+  functionalities: SelectItem[];
   selectedQuotation: Quotation;
   selectedFunctionality: Functionality;
+  functionalityToAdd: Functionality;
   sub: any;
   id: string;
 
 
+
   constructor(private quotationService: QuotationService,
+              private functionalityService: FunctionalityService,
               private router: Router,
-              private route: ActivatedRoute) {}
+              private route: ActivatedRoute) {
+    this.functionalities = [];
+
+   this.functionalityService.getAllFunctionalities().then(res => {
+      let arr = new Array<SelectItem>();
+      for (let f of res) arr.push({label: f.name, value: f.name});
+      this.functionalities = arr;
+    });
+  }
 
 
   getQuotationDetails(quotationId): void {
     this.quotationService.getQuotationDetails(quotationId).then((res => {
         this.quotationName = res.name;
         this.quotationFunctionalities = res.functionalities
+        this.quotationWorkload = res.workload;
       }
     ));
   };

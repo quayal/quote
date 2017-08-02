@@ -17,4 +17,8 @@ export class FunctionalityService {
     return this.http.get(this.functionalityUrl + "/" + functionalityId)
       .toPromise().then((response: Response) => response.json() as Functionality)
   }
+  public getAllFunctionalities(): Promise<Functionality[]> {
+    return this.http.get(this.functionalityUrl)
+      .toPromise().then((response: Response) => response.json() as Functionality[])
+  }
 }

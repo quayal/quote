@@ -8,4 +8,6 @@ export class Quotation {
   clientId: number;
   name: string;
   functionalities: Functionality[];
+  workload: number;
+
 }

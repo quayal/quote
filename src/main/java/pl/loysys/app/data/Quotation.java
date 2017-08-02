@@ -18,7 +18,7 @@ public class Quotation {
     private String name;
 
     @Column
-    private int time;
+    private int workload;
 
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -54,12 +54,12 @@ public class Quotation {
     public void setId(Long id) {
         this.id = id;
     }
-    public int getTime() {
-        return time;
+    public int getWorkload() {
+        return workload;
     }
 
-    public void setTime(int time) {
-        this.time = time;
+    public void setWorkload(int workload) {
+        this.workload = workload;
     }
 
     public List<Functionality> getFunctionalities() {

@@ -1,16 +1,18 @@
 <div>
 
-<h2>Elementy funkcjonalności {{functionalityName}}</h2>
-<ul>
-  <ul class="items">
-    <li *ngFor="let item of functionalityItems"
-        (click)="gotoItemDetail(item)"
-        [class.selected]="item === selectedItem">
-      <span>{{item.id}}</span>
-      <span>{{item.name}}</span>
-    </li>
+  <h2>Elementy funkcjonalności {{functionalityName}}</h2>
+  <h2> Całkowity czas: {{workload}}</h2>
+
+  <ul>
+    <ul class="items">
+      <li *ngFor="let item of functionalityItems"
+          (click)="gotoItemDetail(item)"
+          [class.selected]="item === selectedItem">
+        <span>{{item.id}}</span>
+        <span>{{item.name}}</span>
+      </li>
+    </ul>
   </ul>
-</ul>
 </div>
 
 <router-outlet></router-outlet>

@@ -4,6 +4,6 @@ export class Functionality {
 
   name: string;
   id: number;
-  time: number;
+  workload: number;
   items: Item[];
 }

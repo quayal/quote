@@ -10,6 +10,8 @@ import {ClientModule} from "./client/client.module";
 import { ClientsComponent } from './clients/clients.component';
 import {ClientsModule} from "./clients/clients.module";
 import {FormsModule} from "@angular/forms";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {DropdownModule} from "primeng/primeng";
 
 
 @NgModule({
@@ -20,10 +22,13 @@ import {FormsModule} from "@angular/forms";
   imports: [
     BrowserModule,
     FormsModule,
+    BrowserAnimationsModule,
+    DropdownModule,
     AppRoutingModule,
     ClientsModule,
     ClientModule,
-    HttpModule
+    HttpModule,
+
   ],
   providers: [QuotationService,
               ClientService],

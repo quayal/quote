@@ -18,7 +18,7 @@ public class Functionality {
     private String name;
 
     @Column(name = "functionality_time")
-    private int time;
+    private int workload;
 
     @ManyToMany(mappedBy = "functionalities")
     private List<Quotation> quotations = new ArrayList<>();
@@ -48,16 +48,16 @@ public class Functionality {
         return id;
     }
 
-    public int getTime() {
-        return time;
+    public int getWorkload() {
+        return workload;
     }
 
     public void setName(String functionalityName) {
         this.name = functionalityName;
     }
 
-    public void setTime(int functionalityTime) {
-        this.time = functionalityTime;
+    public void setWorkload(int functionalityTime) {
+        this.workload = functionalityTime;
     }
 
     public void addItem(Item item) {
@@ -79,7 +79,11 @@ public class Functionality {
         return quotationItemsNames;
     }
 
+    public void addQuotationToList(Quotation quotation) {
+        quotations.add(quotation);
+    }
+
     public String toString() {
-        return String.format("Nazwa funkcjonalności: %s, czas wykonania: %d", getName(), getTime());
+        return String.format("Nazwa funkcjonalności: %s, czas wykonania: %d", getName(), getWorkload());
     }
 }

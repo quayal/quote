@@ -1,21 +1,21 @@
 <div [hidden]="router.url.indexOf('functionalities') > -1">
-<h2>Funkcjonalności wyceny {{quotationName}}</h2>
-<ul>
-<ul class="functionalities">
-  <li *ngFor="let functionality of quotationFunctionalities"
-      (click)="gotoFunctionalityDetails(functionality)"
-      [class.selected]="functionality === selectedFunctionality">
-    <span>{{functionality.id}}</span>
-    <span>{{functionality.name}}</span>
-    <span>{{functionality.time}}</span>
-  </li>
-</ul>
-</ul>
+  <h2>Funkcjonalności wyceny {{quotationName}}</h2>
+  <h2> Całkowity czas: {{quotationWorkload}} godzin</h2>
+  <p-dropdown [options]="functionalities" [(ngModel)]="functionalityToAdd" [style]="{'width':'300px'}"
+              [filter] ="true" filterBy="label" placeholder="Wybierz funkcjonalność">
+  </p-dropdown>
+  <p>Funkcjonalność do dodania: {{functionalityToAdd || 'brak'}}</p>
+  <ul>
+    <ul class="functionalities">
+      <li *ngFor="let functionality of quotationFunctionalities"
+          (click)="gotoFunctionalityDetails(functionality)"
+          [class.selected]="functionality === selectedFunctionality">
+        <span>{{functionality.id}}</span>
+        <span>{{functionality.name}}</span>
+        <span>{{functionality.workload}}</span>
+      </li>
+    </ul>
+  </ul>
 </div>
 
 <router-outlet></router-outlet>
-
-  <!--<div *ngIf="selectedHero">
-  <h2>{{selectedQuotation.name | uppercase}} is my quotation</h2>
-  <button (click)="gotoDetail()">View Details</button>
-</div>-->
