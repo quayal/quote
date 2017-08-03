@@ -39,7 +39,9 @@ export class QuotationComponent implements OnInit {
 
    this.functionalityService.getAllFunctionalities().then(res => {
       let arr = new Array<SelectItem>();
-      for (let f of res) arr.push({label: f.name, value: f.name});
+      for (let f of res) {
+        arr.push({label: f.name, value: {name: f.name, workload: f.workload}});
+      }
       this.functionalities = arr;
     });
   }

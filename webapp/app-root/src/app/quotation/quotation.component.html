@@ -2,9 +2,14 @@
   <h2>Funkcjonalności wyceny {{quotationName}}</h2>
   <h2> Całkowity czas: {{quotationWorkload}} godzin</h2>
   <p-dropdown [options]="functionalities" [(ngModel)]="functionalityToAdd" [style]="{'width':'300px'}"
-              [filter] ="true" filterBy="label" placeholder="Wybierz funkcjonalność">
+              [filter]="true" filterBy="label" placeholder="Wybierz funkcjonalność">
   </p-dropdown>
-  <p>Funkcjonalność do dodania: {{functionalityToAdd || 'brak'}}</p>
+
+  <div style="padding-top: 10px"> Funkcjonalność do dodania:
+    {{functionalityToAdd ? functionalityToAdd.name : 'brak'}}
+    {{functionalityToAdd ? 'czas pracy' : ''}} {{functionalityToAdd ? functionalityToAdd.workload: ''}}
+    <button style="display: inline; margin-left: 20px"(click)="doSth">Dodaj</button>
+  </div>
   <ul>
     <ul class="functionalities">
       <li *ngFor="let functionality of quotationFunctionalities"

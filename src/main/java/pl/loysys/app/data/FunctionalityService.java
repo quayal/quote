@@ -17,13 +17,13 @@ public class FunctionalityService {
 
     @Autowired
     private FunctionalityRepository functionalityRepository;
-
     @Autowired
     private QuotationRepository quotationRepository;
 
 
+
     public FunctionalityTO addFunctionality(FunctionalityTO functionalityTO) {
-        Functionality toSave = new Functionality(functionalityTO.getName());
+        Functionality toSave = functionalityRepository.findById(functionalityTO.getId());
         toSave.addQuotationToList(quotationRepository.findById(functionalityTO.getQuotationId()));
         functionalityRepository.save(toSave);
         return functionalityTO;

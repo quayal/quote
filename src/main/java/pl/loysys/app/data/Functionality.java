@@ -66,7 +66,7 @@ public class Functionality {
 
     private int calculateQuotationTime() {
         int totalQuotationTime;
-        totalQuotationTime = items.stream().mapToInt(o -> o.getTime()).sum();
+        totalQuotationTime = items.stream().mapToInt(o -> o.getWorkload()).sum();
         return totalQuotationTime;
     }
 

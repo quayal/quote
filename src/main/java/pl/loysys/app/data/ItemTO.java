@@ -1,18 +1,19 @@
 package pl.loysys.app.data;
 
-public class FunctionalityTO {
+public class ItemTO {
 
     private Long id;
     private String name;
-    private Long quotationId;
+    private Long functionalityId;
     private int workload;
 
-    public FunctionalityTO(String name, Long quotationId) {
+    public ItemTO(String name, Long functionalityId, int workload) {
         this.name = name;
-        this.quotationId = quotationId;
+        this.functionalityId = functionalityId;
+        this.workload = workload;
     }
 
-    public FunctionalityTO() {
+    public ItemTO() {
     }
 
     public Long getId() {
@@ -31,12 +32,12 @@ public class FunctionalityTO {
         this.name = name;
     }
 
-    public Long getQuotationId() {
-        return quotationId;
+    public Long getFunctionalityId() {
+        return functionalityId;
     }
 
-    public void setQuotationId(Long quotationId) {
-        this.quotationId = quotationId;
+    public void setFunctionalityId(Long functionalityId) {
+        this.functionalityId = functionalityId;
     }
 
     public int getWorkload() {

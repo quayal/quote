@@ -14,9 +14,14 @@ public class ItemService {
 
     @Autowired
     private ItemRepository itemRepository;
+    @Autowired
+    private FunctionalityRepository functionalityRepository;
 
-    public Item createNew(String name, int time) {
-        return new Item(name, time);
+    public ItemTO addItem(ItemTO itemTO) {
+        Item toSave = itemRepository.findById(itemTO.getId());
+        toSave.addFunctionalityToList(functionalityRepository.findById(itemTO.getFunctionalityId()));
+        itemRepository.save(toSave);
+        return itemTO;
     }
 
     public List<Item> getAllItems() {

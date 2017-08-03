@@ -15,7 +15,7 @@ public class Item {
 
     private String name;
 
-    private int time;
+    private int workload;
 
     public Item() {
     }
@@ -25,7 +25,7 @@ public class Item {
 
     public Item(String name, int time) {
         this.name = name;
-        this.time = time;
+        this.workload = time;
     }
 
     public String getName() {
@@ -36,12 +36,16 @@ public class Item {
         this.name = name;
     }
 
-    public int getTime() {
-        return time;
+    public int getWorkload() {
+        return workload;
     }
 
-    public void setTime(int time) {
-        this.time = time;
+    public void setWorkload(int workload) {
+        this.workload = workload;
+    }
+
+    public void addFunctionalityToList(Functionality functionality){
+        functionalites.add(functionality);
     }
 
     @JsonIgnore
