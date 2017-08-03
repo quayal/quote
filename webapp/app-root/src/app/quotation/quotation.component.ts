@@ -40,7 +40,7 @@ export class QuotationComponent implements OnInit {
    this.functionalityService.getAllFunctionalities().then(res => {
       let arr = new Array<SelectItem>();
       for (let f of res) {
-        arr.push({label: f.name, value: {name: f.name, workload: f.workload}});
+        arr.push({label: f.name, value: {name: f.name, workload: f.workload, id: f.id}});
       }
       this.functionalities = arr;
     });
@@ -54,7 +54,12 @@ export class QuotationComponent implements OnInit {
         this.quotationWorkload = res.workload;
       }
     ));
-  };
+  }
+
+  addFunctionality(functionality: Functionality): void {
+    this.functionalityService.addFunctionality(this.id, functionality).then(() => this.getQuotationDetails(this.id)
+    )
+  }
 
 
   gotoFunctionalityDetails(functionality: Functionality): void {

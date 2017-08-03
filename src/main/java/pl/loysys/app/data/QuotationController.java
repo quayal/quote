@@ -26,6 +26,7 @@ public class QuotationController {
 
     @PostMapping("/{quotationId}")
     public FunctionalityTO addFunctionality(@PathVariable("quotationId") Long quotationId, @RequestBody FunctionalityTO functionalityTO) {
+        functionalityTO.setQuotationId(quotationId);
         return functionalityService.addFunctionality(functionalityTO);
     }
 }

@@ -36,7 +36,7 @@ export class FunctionalityComponent implements OnInit {
     this.itemService.getAllItems().then(res => {
       let arr = new Array<SelectItem>();
       for (let i of res) {
-        arr.push({label: i.name, value: {name: i.name, workload: i.workload}});
+        arr.push({label: i.name, value: {name: i.name, workload: i.workload, id: i.id}});
       }
       this.items = arr;
     });

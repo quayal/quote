@@ -62,6 +62,10 @@ public class Quotation {
         this.workload = workload;
     }
 
+    public void addFunctionality(Functionality functionality){
+        functionalities.add(functionality);
+    }
+
     public List<Functionality> getFunctionalities() {
         return functionalities;
     }

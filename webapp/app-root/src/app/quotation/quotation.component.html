@@ -8,7 +8,7 @@
   <div style="padding-top: 10px"> Funkcjonalność do dodania:
     {{functionalityToAdd ? functionalityToAdd.name : 'brak'}}
     {{functionalityToAdd ? 'czas pracy' : ''}} {{functionalityToAdd ? functionalityToAdd.workload: ''}}
-    <button style="display: inline; margin-left: 20px"(click)="doSth">Dodaj</button>
+    <button style="display: inline; margin-left: 20px"(click)="addFunctionality(functionalityToAdd)">Dodaj</button>
   </div>
   <ul>
     <ul class="functionalities">

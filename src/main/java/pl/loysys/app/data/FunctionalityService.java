@@ -21,11 +21,11 @@ public class FunctionalityService {
     private QuotationRepository quotationRepository;
 
 
-
     public FunctionalityTO addFunctionality(FunctionalityTO functionalityTO) {
+        Quotation quotationToSave = quotationRepository.findById(functionalityTO.getQuotationId());
         Functionality toSave = functionalityRepository.findById(functionalityTO.getId());
-        toSave.addQuotationToList(quotationRepository.findById(functionalityTO.getQuotationId()));
-        functionalityRepository.save(toSave);
+        quotationToSave.addFunctionality(toSave);
+        quotationRepository.save(quotationToSave);
         return functionalityTO;
     }
 

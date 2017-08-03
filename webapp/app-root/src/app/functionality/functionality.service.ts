@@ -7,8 +7,9 @@ import {Functionality} from "./functionality";
 
 @Injectable()
 export class FunctionalityService {
-  private functionalityUrl = 'api/functionalities'
-  private headers = new Headers({'Content-Type': 'application/json'})
+  private functionalityUrl = 'api/functionalities';
+  private quotationUrl = 'api/quotations';
+  private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) {
   }
@@ -21,4 +22,12 @@ export class FunctionalityService {
     return this.http.get(this.functionalityUrl)
       .toPromise().then((response: Response) => response.json() as Functionality[])
   }
+
+  addFunctionality(quotationId: string, functionality: Functionality): Promise<Functionality> {
+    return this.http
+      .post(this.quotationUrl + "/" + quotationId, functionality, {headers: this.headers})
+      .toPromise()
+      .then((response: Response) => response.json() as Functionality)
+  }
+
 }
