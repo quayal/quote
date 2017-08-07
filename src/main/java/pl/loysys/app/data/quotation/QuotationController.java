@@ -1,23 +1,22 @@
-package pl.loysys.app.data;
+package pl.loysys.app.data.quotation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Payload;
-import java.util.List;
+import pl.loysys.app.data.functionality.FunctionalityService;
+import pl.loysys.app.data.functionality.FunctionalityTO;
 
 @RestController
 @RequestMapping("/quotations")
 public class QuotationController {
 
+    private final FunctionalityService functionalityService;
+    private final QuotationService quotationService;
+
     @Autowired
-    FunctionalityService functionalityService;
-    @Autowired
-    ItemService itemService;
-    @Autowired
-    QuotationService quotationService;
-    @Autowired
-    ClientService clientService;
+    public QuotationController(FunctionalityService functionalityService, QuotationService quotationService) {
+        this.functionalityService = functionalityService;
+        this.quotationService = quotationService;
+    }
 
     @GetMapping("/{quotationId}")
     public Quotation getQuotationDetails(@PathVariable("quotationId") Long quotationId) {

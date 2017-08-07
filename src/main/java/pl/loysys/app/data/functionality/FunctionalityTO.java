@@ -1,11 +1,17 @@
-package pl.loysys.app.data;
+package pl.loysys.app.data.functionality;
+
+import pl.loysys.app.data.item.ItemTO;
+
+import java.util.List;
 
 public class FunctionalityTO {
 
     private Long id;
     private String name;
     private Long quotationId;
-    private int workload;
+    private int guiWorkload;
+    private int ssWorkload;
+    private List<ItemTO> items;
 
     public FunctionalityTO(String name, Long quotationId) {
         this.name = name;
@@ -39,11 +45,27 @@ public class FunctionalityTO {
         this.quotationId = quotationId;
     }
 
-    public int getWorkload() {
-        return workload;
+    public int getGuiWorkload() {
+        return guiWorkload;
     }
 
-    public void setWorkload(int workload) {
-        this.workload = workload;
+    public void setGuiWorkload(int guiWorkload) {
+        this.guiWorkload = guiWorkload;
+    }
+
+    public int getSsWorkload() {
+        return ssWorkload;
+    }
+
+    public void setSsWorkload(int ssWorkload) {
+        this.ssWorkload = ssWorkload;
+    }
+
+    public List<ItemTO> getItems() {
+        return items;
+    }
+
+    public void setItems(List<ItemTO> items) {
+        this.items = items;
     }
 }

@@ -1,4 +1,4 @@
-package pl.loysys.app.data;
+package pl.loysys.app.data.item;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,8 +11,12 @@ import java.util.List;
 @RequestMapping("/items")
 public class ItemController {
 
+    private final ItemService itemService;
+
     @Autowired
-    private ItemService itemService;
+    public ItemController (ItemService itemService){
+        this.itemService = itemService;
+    }
 
     @GetMapping
     public List<Item> getAllItems() {

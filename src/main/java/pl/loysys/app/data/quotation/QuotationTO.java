@@ -1,4 +1,4 @@
-package pl.loysys.app.data;
+package pl.loysys.app.data.quotation;
 
 
 public class QuotationTO {

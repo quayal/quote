@@ -1,4 +1,6 @@
-package pl.loysys.app.data;
+package pl.loysys.app.data.client;
+
+import pl.loysys.app.data.quotation.Quotation;
 
 import java.util.List;
 

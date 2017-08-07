@@ -1,16 +1,21 @@
-package pl.loysys.app.data;
+package pl.loysys.app.data.item;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ItemTO {
 
     private Long id;
     private String name;
     private Long functionalityId;
-    private int workload;
+    private int guiWorkload;
+    private int ssWorkload;
 
-    public ItemTO(String name, Long functionalityId, int workload) {
+    public ItemTO(String name, Long functionalityId, int guiWorkload, int ssWorkload) {
         this.name = name;
         this.functionalityId = functionalityId;
-        this.workload = workload;
+        this.guiWorkload = guiWorkload;
+        this.ssWorkload = ssWorkload;
     }
 
     public ItemTO() {
@@ -40,11 +45,19 @@ public class ItemTO {
         this.functionalityId = functionalityId;
     }
 
-    public int getWorkload() {
-        return workload;
+    public int getGuiWorkload() {
+        return guiWorkload;
     }
 
-    public void setWorkload(int workload) {
-        this.workload = workload;
+    public void setGuiWorkload(int guiWorkload) {
+        this.guiWorkload = guiWorkload;
+    }
+
+    public int getSsWorkload() {
+        return ssWorkload;
+    }
+
+    public void setSsWorkload(int ssWorkload) {
+        this.ssWorkload = ssWorkload;
     }
 }

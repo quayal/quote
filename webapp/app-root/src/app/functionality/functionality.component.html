@@ -8,7 +8,7 @@
 
   <div style="padding-top: 10px"> Element do dodania:
     {{itemToAdd ? itemToAdd.name : 'brak'}}
-    {{itemToAdd ? 'czas pracy' : ''}} {{itemToAdd ? itemToAdd.workload: ''}}
+    {{itemToAdd ? 'czas pracy' : ''}} {{itemToAdd ? itemToAdd.guiWorkload: ''}}
     <button style="display: inline; margin-left: 20px"(click)="addItem">Dodaj</button>
   </div>
 

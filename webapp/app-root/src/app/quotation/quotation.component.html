@@ -7,7 +7,7 @@
 
   <div style="padding-top: 10px"> Funkcjonalność do dodania:
     {{functionalityToAdd ? functionalityToAdd.name : 'brak'}}
-    {{functionalityToAdd ? 'czas pracy' : ''}} {{functionalityToAdd ? functionalityToAdd.workload: ''}}
+    {{functionalityToAdd ? 'czas pracy' : ''}} {{functionalityToAdd ? functionalityToAdd.guiWorkload: ''}}
     <button style="display: inline; margin-left: 20px"(click)="addFunctionality(functionalityToAdd)">Dodaj</button>
   </div>
   <ul>
@@ -17,7 +17,7 @@
           [class.selected]="functionality === selectedFunctionality">
         <span>{{functionality.id}}</span>
         <span>{{functionality.name}}</span>
-        <span>{{functionality.workload}}</span>
+        <span>{{functionality.guiWorkload}}</span>
       </li>
     </ul>
   </ul>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Client} from "../client/client";
 import {ClientService} from "../client/client.service";
 import {Router} from "@angular/router";
@@ -13,10 +13,9 @@ export class ClientsComponent implements OnInit {
   selectedClient: Client;
   newClientName: string;
 
-  constructor(
-    private clientService: ClientService,
-    private router: Router
-  ) { }
+  constructor(private clientService: ClientService,
+              private router: Router) {
+  }
 
   gotoClientDetails(client: Client): void {
     this.selectedClient = client;
@@ -26,13 +25,17 @@ export class ClientsComponent implements OnInit {
   checkIfChildUrl(): boolean {
     let regex = new RegExp('^\/clients\/.+$');
     return regex.test(this.router.url);
-}
+  }
 
   addClient(): void {
-    this.clientService.createClient(this.newClientName).then(() => this.clientService.getAllClients())
- }
+    this.clientService.createClient(this.newClientName)
+      .then(() => this.clientService.getAllClients()
+        .then(res => {
+          this.clients = res;
+        }))
+  }
 
-  ngOnInit(){
+  ngOnInit() {
     this.clientService.getAllClients().then(res => {
       this.clients = res;
     })

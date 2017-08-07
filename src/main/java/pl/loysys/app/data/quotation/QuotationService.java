@@ -1,7 +1,9 @@
-package pl.loysys.app.data;
+package pl.loysys.app.data.quotation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.loysys.app.data.client.Client;
+import pl.loysys.app.data.client.ClientRepository;
 
 import java.util.ArrayList;
 import java.util.List;

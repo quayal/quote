@@ -1,4 +1,4 @@
-package pl.loysys.app.data;
+package pl.loysys.app.data.functionality;
 
 import org.springframework.data.repository.CrudRepository;
 

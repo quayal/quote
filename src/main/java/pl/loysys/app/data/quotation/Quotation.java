@@ -1,6 +1,8 @@
-package pl.loysys.app.data;
+package pl.loysys.app.data.quotation;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import pl.loysys.app.data.client.Client;
+import pl.loysys.app.data.functionality.Functionality;
 
 import javax.persistence.Column;
 import javax.persistence.*;

@@ -1,6 +1,6 @@
-package pl.loysys.app.data;
+package pl.loysys.app.data.client;
 
-import org.hibernate.annotations.Cascade;
+import pl.loysys.app.data.quotation.Quotation;
 
 import javax.persistence.*;
 import java.util.List;

@@ -1,23 +1,25 @@
-package pl.loysys.app.data;
+package pl.loysys.app.data.client;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pl.loysys.app.data.quotation.QuotationService;
+import pl.loysys.app.data.quotation.QuotationTO;
 
-import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
 @RequestMapping("/clients")
 public class ClientController {
 
-    public ClientController() {
+    @Autowired
+    public ClientController(ClientService clientService, QuotationService quotationService) {
+        this.clientService = clientService;
+        this.quotationService = quotationService;
     }
 
-    @Autowired
-    private ClientService clientService;
+    private final ClientService clientService;
 
-    @Autowired
-    private QuotationService quotationService;
+    private final QuotationService quotationService;
 
     @GetMapping
     public List<Client> getClients() {
@@ -34,8 +36,8 @@ public class ClientController {
         return quotationService.addQuotation(quotationTO);
     }
     @PostMapping
-    public Client addClient(@RequestBody Client client) {
-        return clientService.addNewClient(client);
+    public Client addClient(@RequestBody ClientTO clientTO) {
+        return clientService.addNewClient(clientTO);
     }
 
 
